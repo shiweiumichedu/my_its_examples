@@ -3,9 +3,9 @@ export API_KEY = "X"
 export API_BASE = "X"
 export API_VERSION = "X"
 export ORGANIZATION = "X"
+export DEPLOYMENT_ID = "X"
 
-
-curl $API_BASE"/openai/deployments/gpt-35-turbo/chat/completions?api-version="$API_VERSION \
+curl $API_BASE"/openai/deployments/"$DEPLOYMENT_ID"/chat/completions?api-version="$API_VERSION \
   -H "Content-Type: application/json" \
   -H "OpenAI-Organization: $ORGANIZATION" \
   -H "api-key: $API_KEY" \
