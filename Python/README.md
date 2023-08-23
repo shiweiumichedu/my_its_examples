@@ -15,10 +15,15 @@ Please create a .env in the same directory as your script with the following:
 
 
 model=X
+
 openai_api_base=X
+
 openai_api_type=X
+
 OPENAI_API_KEY=X
+
 OPENAI_organization=X
+
 API_VERSION=X
 
 **References**  
