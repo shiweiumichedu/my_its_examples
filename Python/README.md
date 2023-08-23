@@ -11,6 +11,16 @@ DEPLOYMENT_ID = "gpt-35-turbo" #chat deployment model name
 API_KEY #your 32 character API key  
 ORGANIZATION #a valid 6 digit shortcode  
 
+Please create a .env in the same directory as your script with the following:
+
+
+model=X
+openai_api_base=X
+openai_api_type=X
+OPENAI_API_KEY=X
+OPENAI_organization=X
+API_VERSION=X
+
 **References**  
   
 [Azure OpenAI Service REST API reference](https://learn.microsoft.com/en-us/azure/ai-services/openai/reference)
