@@ -1,15 +1,13 @@
 import openai
-#import logging
 from dotenv import dotenv_values
-import os
 
-secrets = dotenv_values(".env")  #Load environment file for secrets.
-#logging.basicConfig(level=logging.DEBUG)
-
+#Load environment file for secrets.
+secrets = dotenv_values(".env")  
 
 # Send a completion call to generate an answer
 print('Sending a test completion job')
 
+#Define parameters and ask a query.
 response = openai.ChatCompletion.create(
       api_key = secrets['OPENAI_API_KEY'],
       organization = secrets['OPENAI_organization'],
@@ -25,6 +23,6 @@ response = openai.ChatCompletion.create(
       frequency_penalty=0,
       presence_penalty=0,
       stop=None)
-#print(response('content'))
-print(response)
+
+#Print response.
 print(response['choices'][0]['message']['content'])
