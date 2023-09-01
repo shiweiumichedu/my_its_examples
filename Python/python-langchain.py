@@ -1,11 +1,11 @@
 from langchain.schema import HumanMessage
 from langchain.chat_models import AzureChatOpenAI
-#import logging
 from dotenv import dotenv_values
-import os
 
-secrets = dotenv_values(".env")  #Load environment file for secrets.
+#Load environment file for secrets.
+secrets = dotenv_values(".env")  
 
+#Define llm parameters
 llm = AzureChatOpenAI(
     deployment_name=secrets['model'],
     openai_api_version=secrets['API_VERSION'],
@@ -13,5 +13,10 @@ llm = AzureChatOpenAI(
     openai_api_base=secrets['openai_api_base'],
     openai_organization=secrets['OPENAI_organization']
     )
+
+#Ask a query
 msg = HumanMessage(content="Explain step by step. Where is the University of Michigan?")
-print(llm(messages=[msg]))
+
+#Get and print response
+response = llm(messages=[msg])
+print(response.content)
