@@ -3,7 +3,7 @@ A collection of code examples you can use to access the U-M GPT Toolkit API serv
 
 **Common required parameters**  
   
-Note that these parameters may be represented by slightly differnt naming conventions, depepending on script language and module requirements.  
+Note that these parameters may be represented by slightly different naming conventions, depepending on script language and module requirements.  
    
 api_base = "https://api.umgpt.umich.edu/azure-openai-api"  
 api_version = "2023-05-15" #latest non-preview completion version  
