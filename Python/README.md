@@ -18,8 +18,6 @@ model=gpt-35-turbo
 
 openai_api_base=https://api.umgpt.umich.edu/azure-openai-api
 
-openai_api_type=azure
-
 OPENAI_API_KEY=X
 
 OPENAI_organization=X

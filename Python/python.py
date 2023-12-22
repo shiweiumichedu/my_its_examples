@@ -1,28 +1,36 @@
-import openai
-from dotenv import dotenv_values
+from openai import AzureOpenAI
+import os
+from dotenv import load_dotenv
+
+#Sets the current working directory to be the same as the file.
+os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
 #Load environment file for secrets.
-secrets = dotenv_values(".env")  
+try:
+    if load_dotenv('.env') is False:
+        raise TypeError
+except TypeError:
+    print('Unable to load .env file.')
+    quit()
+#Create Azure client
+client = AzureOpenAI(
+    api_key=os.environ['OPENAI_API_KEY'],  
+    api_version=os.environ['API_VERSION'],
+    azure_endpoint = os.environ['openai_api_base'],
+    organization = os.environ['OPENAI_organization']
+)
 
 # Send a completion call to generate an answer
 print('Sending a test completion job')
 
-#Define parameters and ask a query.
-response = openai.ChatCompletion.create(
-      api_key = secrets['OPENAI_API_KEY'],
-      organization = secrets['OPENAI_organization'],
-      api_base= secrets['openai_api_base'],
-      api_type = secrets['openai_api_type'],
-      api_version = secrets['API_VERSION'],
-      engine = secrets['model'],
-      messages = [{"role":"system","content":"You are a helpful ” \
-        “bot"},{"role":"user","content":"What is 2+2"}],
-      temperature=0,
-      max_tokens=500,
-      top_p=0.95,
-      frequency_penalty=0,
-      presence_penalty=0,
-      stop=None)
+response = client.chat.completions.create(
+        model=os.environ['model'],
+        messages=[
+            {"role": "system", "content": "You are a helpful assistant."},
+            {"role": "user", "content": "What is 2 + 2?"}
+        ],
+        temperature=0,
+        stop=None)
 
 #Print response.
-print(response['choices'][0]['message']['content'])
+print(response.choices[0].message.content)
