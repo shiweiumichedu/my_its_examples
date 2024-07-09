@@ -4,7 +4,7 @@ $Error.clear()
 
 #U-M GPT required parameters
 $API_BASE = "https://api.umgpt.umich.edu/azure-openai-api" #U-M GPT API gateway URL
-$API_VERSION = "2023-05-15" #latest non-preview completion version
+$API_VERSION = "2024-02-01" #latest non-preview completion version
 $DEPLOYMENT_ID = "gpt-35-turbo" #chat deployment model name
 $MESSAGES =  @{role="system";content="You are a helpful bot"},@{role="user";content="What is 2+2"} #chat message
 
