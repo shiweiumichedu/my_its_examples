@@ -24,6 +24,7 @@ client = AzureOpenAI(
 # Send a completion call to generate an answer
 print('Sending a test completion job')
 
+#Send a completion request to the model with a prompt and the url of the image.
 response = client.chat.completions.create(
     model=os.environ['model'],
     messages=[
