@@ -21,13 +21,8 @@ client = AzureOpenAI(
     organization = os.environ['OPENAI_organization']
 )
 
-# Send a completion call to generate an answer
-print('Sending a test completion job')
-
-#Send a completion request to the model with a prompt and the url of the image.
-response = client.chat.completions.create(
-    model=os.environ['model'],
-    messages=[
+#Create Query
+messages=[
         {"role": "system", "content": "You are a helpful assistant that responds in Markdown!  Help the user by describing the picture."},
         {"role": "user", "content": [
             {"type": "text", "text": "What is this picture of?"},
@@ -35,7 +30,11 @@ response = client.chat.completions.create(
                 "url": "https://michiganross.umich.edu/sites/default/files/styles/max_1300x1300/public/images/news-story/butterfly.jpeg"}
             }
         ]}
-    ],
+    ]
+
+response = client.chat.completions.create(
+    model=os.environ['model'],
+    messages=messages,
     temperature=0.0,
 )
 

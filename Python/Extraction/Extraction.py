@@ -103,5 +103,6 @@ I have meetings with my supervisors, Ben and Don, each workday at 9:30 am.
 The Ann Arbor campus is divided into four main areas: North campus, Central campus, Medical campus, and South campus, for a combined area of more than 37.48 million square feet.
 UMich's mascot is the wolverine."""
 
+
 result = run_ner_task(labels_list, text)
 print(result.content)

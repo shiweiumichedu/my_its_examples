@@ -22,9 +22,15 @@ llm = AzureChatOpenAI(
     openai_organization=os.environ['OPENAI_organization']
     )
 
-# Ask a query
-prompt = "Explain step by step. Where is the University of Michigan?"
+#Create Query
+messages = [
+    ("system","You are a helpful assistant.  Always say GO BLUE! at the end of your response."),
+    ("human", "Explain step by step. Where is the University of Michigan?"),
+]
+
+# Send a completion request.
+response = llm.invoke(messages)
 
 # Get and print response
-response = llm.invoke(prompt)
+response = llm.invoke(messages)
 print(response.content)

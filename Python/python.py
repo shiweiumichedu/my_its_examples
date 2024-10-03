@@ -12,6 +12,7 @@ try:
 except TypeError:
     print('Unable to load .env file.')
     quit()
+
 #Create Azure client
 client = AzureOpenAI(
     api_key=os.environ['OPENAI_API_KEY'],  
@@ -20,15 +21,16 @@ client = AzureOpenAI(
     organization = os.environ['OPENAI_organization']
 )
 
-# Send a completion call to generate an answer
-print('Sending a test completion job')
+#Create Query
+messages=[
+        {"role": "system","content": "You are a helpful assistant.  Always say GO BLUE! at the end of your response."},
+        {"role": "user","content": "Explain step by step. Where is the University of Michigan?"},
+    ]
 
+# Send a completion request.
 response = client.chat.completions.create(
         model=os.environ['model'],
-        messages=[
-            {"role": "system", "content": "You are a helpful assistant."},
-            {"role": "user", "content": "What is 2 + 2?"}
-        ],
+        messages=messages,
         temperature=0,
         stop=None)
 
