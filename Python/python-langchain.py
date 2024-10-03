@@ -15,12 +15,12 @@ except TypeError:
 
 # Define llm parameters
 llm = AzureChatOpenAI(
-    deployment_name=os.environ['model'],
+    deployment_name=os.environ['MODEL'],
     openai_api_version=os.environ['API_VERSION'],
     openai_api_key=os.environ['OPENAI_API_KEY'],
-    azure_endpoint=os.environ['openai_api_base'],
+    azure_endpoint = os.environ['OPENAI_API_BASE'],
     openai_organization=os.environ['OPENAI_organization']
-    )
+)
 
 #Create Query
 messages = [
