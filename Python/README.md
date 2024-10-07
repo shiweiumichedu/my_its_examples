@@ -16,9 +16,13 @@ Please create a .env in the same directory as your script with the following:
 
 
 model=gpt-4o
+
 OPENAI_API_BASE=https://api.umgpt.umich.edu/azure-openai-api
+
 OPENAI_API_KEY=X
+
 OPENAI_ORGANIZATION=X
+
 API_VERSION=2024-06-01
 
 
