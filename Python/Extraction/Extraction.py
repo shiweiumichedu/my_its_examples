@@ -14,8 +14,8 @@ if not load_dotenv('.env'):
 client = AzureOpenAI(
     api_key=os.environ['OPENAI_API_KEY'],  
     api_version=os.environ['API_VERSION'],
-    azure_endpoint = os.environ['openai_api_base'],
-    organization = os.environ['OPENAI_organization']
+    azure_endpoint = os.environ['OPENAI_API_BASE'],
+    organization = os.environ['OPENAI_ORGANIZATION']
 )
 
 # Returns a list of entities based on the label given.

@@ -29,7 +29,7 @@ messages=[
 
 # Send a completion request.
 response = client.chat.completions.create(
-        model=os.environ['model'],
+        model=os.environ['MODEL'],
         messages=messages,
         temperature=0,
         stop=None)

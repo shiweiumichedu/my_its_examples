@@ -33,7 +33,7 @@ messages=[
     ]
 
 response = client.chat.completions.create(
-    model=os.environ['model'],
+    model=os.environ['MODEL'],
     messages=messages,
     temperature=0.0,
 )
