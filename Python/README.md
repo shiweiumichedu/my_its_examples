@@ -15,10 +15,10 @@ ORGANIZATION #a valid 6 digit shortcode
 Please create a .env in the same directory as your script with the following:
 
 
-MODEL=gpt-4o
-OPENAI_API_BASE=https://api.umgpt.umich.edu/azure-openai-api
+model=gpt-4o
+openai_api_base=https://api.umgpt.umich.edu/azure-openai-api
 OPENAI_API_KEY=X
-OPENAI_ORGANIZATION=X
+OPENAI_organization=X
 API_VERSION=2024-06-01
 
 
