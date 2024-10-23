@@ -19,7 +19,7 @@ llm = AzureChatOpenAI(
     openai_api_version=os.environ['API_VERSION'],
     openai_api_key=os.environ['OPENAI_API_KEY'],
     azure_endpoint = os.environ['OPENAI_API_BASE'],
-    openai_organization=os.environ['OPENAI_organization']
+    openai_organization=os.environ['OPENAI_ORGANIZATION']
 )
 
 #Create Query

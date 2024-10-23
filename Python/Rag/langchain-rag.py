@@ -27,11 +27,11 @@ except TypeError:
 
 # Define llm parameters
 llm = AzureChatOpenAI(
-    deployment_name=os.environ['model'],
+    deployment_name=os.environ['MODEL'],
     openai_api_version=os.environ['API_VERSION'],
     openai_api_key=os.environ['OPENAI_API_KEY'],
-    azure_endpoint=os.environ['openai_api_base'],
-    openai_organization=os.environ['OPENAI_organization']
+    azure_endpoint=os.environ['OPENAI_API_BASE'],
+    openai_organization=os.environ['OPENAI_ORGANIZATION']
     )
 
 # Replace with the document(s) you wish to use
@@ -47,10 +47,10 @@ print("Document loaded.")
 
 # Settings for embeddings
 embeddings = AzureOpenAIEmbeddings(
-    azure_endpoint=os.environ['openai_api_base'], 
+    azure_endpoint=os.environ['OPENAI_API_BASE'], 
     openai_api_version=os.environ['API_VERSION'],  
     openai_api_key=os.environ['OPENAI_API_KEY'],   
-    openai_organization=os.environ['OPENAI_organization']   
+    openai_organization=os.environ['OPENAI_ORGANIZATION']   
 )
 
 print("Embedding documents...")
