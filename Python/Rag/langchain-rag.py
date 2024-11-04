@@ -1,6 +1,6 @@
 # Sample Q&A RAG application over a text data source
 
-from langchain_openai import AzureChatOpenAI
+from langchain_openai import AzureChatOpenAI, AzureOpenAIEmbeddings
 import os
 from dotenv import load_dotenv
 from langchain_text_splitters import RecursiveCharacterTextSplitter
@@ -8,7 +8,6 @@ from langchain.chains import create_history_aware_retriever, create_retrieval_ch
 from langchain.chains.combine_documents import create_stuff_documents_chain
 from langchain_chroma import Chroma
 from langchain_community.chat_message_histories import ChatMessageHistory
-from langchain_openai import AzureOpenAIEmbeddings
 from langchain_community.document_loaders import PyPDFLoader
 from langchain_core.chat_history import BaseChatMessageHistory
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
@@ -25,12 +24,18 @@ except TypeError:
     print('Unable to load .env file.')
     quit()
 
+endpoint = os.environ['OPENAI_API_BASE']
+
+#Remove OPENAI_API_BASE from the environment variables as this causes an error with AzureOpenAIEmbeddings
+if "OPENAI_API_BASE" in os.environ:
+    del os.environ["OPENAI_API_BASE"]
+
 # Define llm parameters
 llm = AzureChatOpenAI(
     deployment_name=os.environ['MODEL'],
     openai_api_version=os.environ['API_VERSION'],
     openai_api_key=os.environ['OPENAI_API_KEY'],
-    azure_endpoint=os.environ['OPENAI_API_BASE'],
+    azure_endpoint=endpoint,
     openai_organization=os.environ['OPENAI_ORGANIZATION']
     )
 
@@ -47,10 +52,11 @@ print("Document loaded.")
 
 # Settings for embeddings
 embeddings = AzureOpenAIEmbeddings(
-    azure_endpoint=os.environ['OPENAI_API_BASE'], 
+    azure_endpoint=endpoint, 
     openai_api_version=os.environ['API_VERSION'],  
     openai_api_key=os.environ['OPENAI_API_KEY'],   
-    openai_organization=os.environ['OPENAI_ORGANIZATION']   
+    openai_organization=os.environ['OPENAI_ORGANIZATION'],
+    deployment_name="text-embed-v1" 
 )
 
 print("Embedding documents...")
