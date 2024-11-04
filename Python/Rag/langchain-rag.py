@@ -56,7 +56,7 @@ embeddings = AzureOpenAIEmbeddings(
     openai_api_version=os.environ['API_VERSION'],  
     openai_api_key=os.environ['OPENAI_API_KEY'],   
     openai_organization=os.environ['OPENAI_ORGANIZATION'],
-    deployment_name="text-embed-v1" 
+    model="text-embedding-3-small" 
 )
 
 print("Embedding documents...")
